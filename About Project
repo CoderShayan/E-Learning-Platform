@@ -1,0 +1,76 @@
+That’s a solid synopsis, bro — clear and well-structured. But let’s tighten it up and make it read more professional, while keeping your intent crystal clear. I’ll fix the grammar, flow, and format a bit without changing your meaning. Here’s a polished version 👇
+
+---
+
+## **Title: FREE-LEARN**
+
+---
+
+### **1. Objective**
+
+Nowadays, online learning platforms have become too costly, making it difficult for learners who wish to acquire new skills but cannot afford premium courses.
+The main objective of **FREE-LEARN** is to provide high-quality, expensive courses **completely free of cost** to everyone who wants to learn and grow.
+This website requires **no login or subscription** and focuses on **daily structured learning**, allowing users to progress step-by-step through organized lessons.
+
+---
+
+### **2. Problem Statement**
+
+Most existing e-learning platforms demand user registration, paid subscriptions, or have complex navigation systems, which discourage many learners.
+Meanwhile, free educational resources available online are scattered and lack proper structure, making consistent learning difficult.
+
+---
+
+### **3. Proposed System**
+
+The proposed system is a **static, web-based learning platform** that allows users to freely access structured and trending courses such as **HTML/CSS, JavaScript, and Python** — with plans to include **AI learning** in the future.
+The platform will ensure a **clear, day-wise learning flow** and **structured content** for better understanding and retention.
+
+---
+
+### **4. Key Features**
+
+* 🚫 No Login or Subscription Required
+* 💸 100% Free Access to All Courses
+* 📅 Day-wise Structured Lessons (Day 01 → Day 02 → Day 03 → …)
+* 💾 LocalStorage-based Progress Tracking (Client-side)
+* 🧭 Clean, Minimal UI with Limited Static Ads
+* ⚡ SEO-friendly and Fast-loading Design
+
+---
+
+### **5. Technology Used**
+
+**Front-End:** HTML, CSS, JavaScript
+**Hosting:** Hostinger
+
+---
+
+### **6. Modules**
+
+* **Home Module:** Displays all available courses and includes a search bar.
+* **Course Module:** Lists all daily lessons of the selected course.
+* **Lesson Module:** Shows detailed content with explanations and examples.
+* **Ad Module:** Displays static banners for monetization.
+
+---
+
+### **7. Advantages**
+
+* Free and open access to education
+* Simple and user-friendly interface
+* No login or signup barriers
+* Mobile-friendly and responsive design
+* Easy scalability for adding new courses
+
+---
+
+### **8. Future Scope**
+
+* Integration of **course completion certificates**
+* Addition of **quizzes and leaderboards** for engagement
+* Development of an **admin panel** for easy content management
+
+---
+
+Want me to make a **synopsis front-page format** (with proper layout like for college submission — including project title, submitted by, guided by, etc.) next? That’ll make it ready-to-print for your report.
