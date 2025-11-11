@@ -1,1 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FREE-LEARN - Free Online Education Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* New Color Scheme & Variables */
+        :root {
+            --primary: #7C3AED;    /* Vibrant Purple */
+            --primary-light: #8B5CF6;
+            --primary-dark: #6D28D9;
+            --secondary: #0EA5E9;   /* Sky Blue */
+            --accent: #10B981;      /* Emerald Green */
+            --light: #F8FAFC;
+            --dark: #1E293B;
+            --gray: #64748B;
+            --gray-light: #E2E8F0;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --border-radius: 12px;
+            --border-radius-lg: 20px;
+            --box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --box-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo-icon {
+            font-size: 2.2rem;
+            background: rgba(255, 255, 255, 0.2);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .logo:hover .logo-icon {
+            transform: rotate(10deg) scale(1.1);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo-subtitle {
+            font-size: 0.8rem;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-top: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav a i {
+            font-size: 1.1rem;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-input {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            padding: 0.6rem 1rem 0.6rem 2.8rem;
+            color: white;
+            font-size: 0.95rem;
+            width: 220px;
+            transition: var(--transition);
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.25);
+            width: 280px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.9rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-graphic {
+            width: 100%;
+            max-width: 500px;
+            height: 350px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-lg);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .floating-icon {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.7;
+        }
+
+        .floating-icon:nth-child(1) {
+            top: 20px;
+            left: 30px;
+            color: var(--accent);
+        }
+
+        .floating-icon:nth-child(2) {
+            top: 40px;
+            right: 40px;
+            color: var(--warning);
+        }
+
+        .floating-icon:nth-child(3) {
+            bottom: 30px;
+            left: 50px;
+            color: var(--secondary);
+        }
+
+        .floating-icon:nth-child(4) {
+            bottom: 50px;
+            right: 60px;
+            color: white;
+        }
+
+        .graphic-center {
+            text-align: center;
+            z-index: 2;
+        }
+
+        .graphic-center i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .graphic-center h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .graphic-center p {
+            opacity: 0.8;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--light);
+            padding: 2.5rem 2rem;
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid var(--gray-light);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow-lg);
+            border-color: var(--primary-light);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .feature-description {
+            color: var(--gray);
+        }
+
+        /* Courses Section */
+        .courses {
+            padding: 5rem 2rem;
+            background: linear-gradient(to bottom, white, var(--light));
+        }
+
+        .courses-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 1px solid var(--gray-light);
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow-lg);
+        }
+
+        .course-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .course-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .course-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .course-content {
+            padding: 1.5rem;
+        }
+
+        .course-description {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .course-progress {
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: var(--gray-light);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .btn-course {
+            display: block;
+            text-align: center;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-course:hover {
+            background: var(--primary-dark);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .btn-cta {
+            background: white;
+            color: var(--primary);
+            font-size: 1.1rem;
+            padding: 1rem 2.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+            font-size: 1.3rem;
+        }
+
+        .footer-section p {
+            color: #CBD5E1;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: #CBD5E1;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94A3B8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-stats {
+                justify-content: center;
+            }
+            
+            .hero-content {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+            
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .search-container {
+                order: 3;
+                width: 100%;
+                margin-top: 1rem;
+            }
+            
+            .search-input {
+                width: 100%;
+            }
+            
+            .search-input:focus {
+                width: 100%;
+            }
+            
+            nav {
+                display: none;
+                width: 100%;
+                margin-top: 1rem;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .header-actions {
+                margin-left: auto;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .courses-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">📚</div>
+                <div class="logo-text">
+                    <span>FREE-LEARN</span>
+                    <span class="logo-subtitle">Education For All</span>
+                </div>
+            </a>
+
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="courses.html"><i class="fas fa-book-open"></i> Courses</a></li>
+                    <li><a href="progress.html"><i class="fas fa-chart-line"></i> My Progress</a></li>
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search courses...">
+                </div>
+                
+                <button class="mobile-menu-btn" id="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Learn Without Limits, For Free</h1>
+                <p class="hero-subtitle">Access high-quality, structured courses completely free of cost. No login or subscription required. Start your learning journey today!</p>
+                
+                <div class="hero-buttons">
+                    <a href="courses.html" class="btn btn-primary">
+                        <i class="fas fa-play-circle"></i> Start Learning
+                    </a>
+                    <a href="#courses" class="btn btn-secondary">
+                        <i class="fas fa-book"></i> Browse Courses
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">50K+</span>
+                        <span class="stat-label">Active Learners</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">120+</span>
+                        <span class="stat-label">Free Courses</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Free Forever</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="hero-graphic">
+                    <div class="floating-icon"><i class="fas fa-code"></i></div>
+                    <div class="floating-icon"><i class="fas fa-laptop-code"></i></div>
+                    <div class="floating-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <div class="floating-icon"><i class="fas fa-cloud"></i></div>
+                    
+                    <div class="graphic-center">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Start Learning Today</h3>
+                        <p>No registration required</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="section-header">
+            <h2 class="section-title">Why Choose FREE-LEARN?</h2>
+            <p class="section-subtitle">We're revolutionizing online education by removing all barriers to learning</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-lock-open"></i>
+                </div>
+                <h3 class="feature-title">No Login Required</h3>
+                <p class="feature-description">Start learning immediately without any registration barriers. Your privacy is respected - we don't collect personal data.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <h3 class="feature-title">100% Free Forever</h3>
+                <p class="feature-description">All courses and learning materials are completely free of cost. No hidden fees, no premium tiers - ever.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h3 class="feature-title">Structured Learning Path</h3>
+                <p class="feature-description">Day-by-day lessons designed for progressive skill building. Follow a clear path from beginner to advanced.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <h3 class="feature-title">Progress Tracking</h3>
+                <p class="feature-description">Your progress is automatically saved locally on your device. Pick up right where you left off anytime.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3 class="feature-title">Mobile Friendly</h3>
+                <p class="feature-description">Learn on any device - desktop, tablet, or smartphone. Our responsive design works perfectly everywhere.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3 class="feature-title">Always Updated</h3>
+                <p class="feature-description">Course content is regularly updated with the latest industry trends and best practices.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+        <div class="courses-header">
+            <div class="section-header" style="text-align: left; margin: 0;">
+                <h2 class="section-title">Popular Courses</h2>
+                <p class="section-subtitle">Start with these trending courses loved by our community</p>
+            </div>
+            <a href="courses.html" class="btn btn-secondary">View All Courses</a>
+        </div>
+        
+        <div class="courses-grid">
+            <!-- HTML/CSS Course -->
+            <div class="course-card">
+                <div class="course-header">
+                    <div class="course-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h3 class="course-title">HTML & CSS Fundamentals</h3>
+                </div>
+                <div class="course-content">
+                    <p class="course-description">Learn to build beautiful, responsive websites with HTML and CSS. Master layout techniques, CSS Grid, Flexbox and modern design principles.</p>
+                    
+                    <div class="course-meta">
+                        <span><i class="fas fa-play-circle"></i> 30 Lessons</span>
+                        <span><i class="fas fa-clock"></i> 15 Hours</span>
+                        <span><i class="fas fa-signal"></i> Beginner</span>
+                    </div>
+                    
+                    <div class="course-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 25%"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>25% Completed</span>
+                            <span>8/30 Lessons</span>
+                        </div>
+                    </div>
+                    
+                    <a href="course-html-css.html" class="btn-course">Continue Learning</a>
+                </div>
+            </div>
+            
+            <!-- JavaScript Course -->
+            <div class="course-card">
+                <div class="course-header">
+                    <div class="course-icon">
+                        <i class="fab fa-js-square"></i>
+                    </div>
+                    <h3 class="course-title">JavaScript Programming</h3>
+                </div>
+                <div class="course-content">
+                    <p class="course-description">Master the language of the web and create interactive experiences. Learn ES6+, DOM manipulation, APIs, and modern JavaScript frameworks.</p>
+                    
+                    <div class="course-meta">
+                        <span><i class="fas fa-play-circle"></i> 45 Lessons</span>
+                        <span><i class="fas fa-clock"></i> 25 Hours</span>
+                        <span><i class="fas fa-signal"></i> Intermediate</span>
+                    </div>
+                    
+                    <div class="course-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>60% Completed</span>
+                            <span>27/45 Lessons</span>
+                        </div>
+                    </div>
+                    
+                    <a href="course-javascript.html" class="btn-course">Continue Learning</a>
+                </div>
+            </div>
+            
+            <!-- Python Course -->
+            <div class="course-card">
+                <div class="course-header">
+                    <div class="course-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3 class="course-title">Python for Beginners</h3>
+                </div>
+                <div class="course-content">
+                    <p class="course-description">Learn one of the most versatile and popular programming languages. From basics to web development, data analysis, and automation.</p>
+                    
+                    <div class="course-meta">
+                        <span><i class="fas fa-play-circle"></i> 40 Lessons</span>
+                        <span><i class="fas fa-clock"></i> 20 Hours</span>
+                        <span><i class="fas fa-signal"></i> Beginner</span>
+                    </div>
+                    
+                    <div class="course-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 10%"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>10% Completed</span>
+                            <span>4/40 Lessons</span>
+                        </div>
+                    </div>
+                    
+                    <a href="course-python.html" class="btn-course">Continue Learning</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-container">
+            <h2 class="cta-title">Ready to Start Your Learning Journey?</h2>
+            <p class="cta-subtitle">Join thousands of learners who are advancing their skills with FREE-LEARN</p>
+            <a href="courses.html" class="btn btn-cta">
+                <i class="fas fa-rocket"></i> Explore All Courses
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>FREE-LEARN</h3>
+                <p>Providing free, high-quality education to everyone without barriers. Our mission is to make learning accessible to all.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="courses.html"><i class="fas fa-chevron-right"></i> All Courses</a></li>
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Popular Courses</h3>
+                <ul>
+                    <li><a href="course-html-css.html"><i class="fas fa-chevron-right"></i> HTML & CSS</a></li>
+                    <li><a href="course-javascript.html"><i class="fas fa-chevron-right"></i> JavaScript</a></li>
+                    <li><a href="course-python.html"><i class="fas fa-chevron-right"></i> Python</a></li>
+                    <li><a href="course-react.html"><i class="fas fa-chevron-right"></i> React JS</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><a href="mailto:info@free-learn.com"><i class="fas fa-envelope"></i> info@free-learn.com</a></li>
+                    <li><a href="#"><i class="fas fa-globe"></i> www.free-learn.com</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Global Education Platform</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2023 FREE-LEARN. All rights reserved. | Education For All
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+            const nav = document.getElementById('main-nav');
+            nav.classList.toggle('active');
+            
+            // Change icon based on menu state
+            const icon = this.querySelector('i');
+            if (nav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#main-nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                const nav = document.getElementById('main-nav');
+                const toggle = document.getElementById('mobile-menu-toggle');
+                const icon = toggle.querySelector('i');
+                
+                if (nav.classList.contains('active')) {
+                    nav.classList.remove('active');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+
+        // Add subtle animation to header on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.padding = '0.7rem 2rem';
+                header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+            } else {
+                header.style.padding = '1rem 2rem';
+                header.style.boxShadow = 'var(--box-shadow)';
+            }
+        });
+
+        // Animate progress bars when they come into view
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressFill = entry.target.querySelector('.progress-fill');
+                    const width = progressFill.style.width;
+                    progressFill.style.width = '0%';
+                    
+                    setTimeout(() => {
+                        progressFill.style.width = width;
+                    }, 300);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.course-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
