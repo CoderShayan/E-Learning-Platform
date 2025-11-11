@@ -3,52 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FREE-LEARN - Free Online Education Platform</title>
+    <title>FREE-LEARN - Asymmetrical Education Platform</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* New Color Scheme & Variables */
+        /* Asymmetrical Design System */
         :root {
-            --primary: #7C3AED;    /* Vibrant Purple */
-            --primary-light: #8B5CF6;
-            --primary-dark: #6D28D9;
-            --secondary: #0EA5E9;   /* Sky Blue */
-            --accent: #10B981;      /* Emerald Green */
-            --light: #F8FAFC;
-            --dark: #1E293B;
-            --gray: #64748B;
-            --gray-light: #E2E8F0;
-            --warning: #F59E0B;
-            --danger: #EF4444;
-            --border-radius: 12px;
-            --border-radius-lg: 20px;
-            --box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            --box-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
+            --primary: #6C63FF;
+            --primary-dark: #564FD8;
+            --secondary: #FF6584;
+            --accent: #36D1DC;
+            --accent-alt: #FFB347;
+            --light: #FFFFFF;
+            --dark: #1A1A2E;
+            --gray: #6C757D;
+            --gray-light: #F8F9FA;
+            --gray-dark: #2D3047;
+            --border-radius: 16px;
+            --border-radius-lg: 24px;
+            --border-radius-xl: 32px;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --gradient-primary: linear-gradient(135deg, var(--primary), var(--accent));
+            --gradient-secondary: linear-gradient(135deg, var(--secondary), var(--accent-alt));
+            --gradient-dark: linear-gradient(135deg, var(--dark), #16213E);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.15);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--light);
+            background: var(--light);
             color: var(--dark);
-            line-height: 1.6;
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.7;
             overflow-x: hidden;
         }
 
-        /* Header Styles */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* Asymmetrical Header */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 1rem 2rem;
-            box-shadow: var(--box-shadow);
-            position: sticky;
+            background: var(--light);
+            padding: 1.5rem 2rem;
+            position: fixed;
             top: 0;
-            z-index: 100;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            padding: 1rem 2rem;
         }
 
         .header-container {
@@ -64,26 +87,28 @@
             align-items: center;
             gap: 12px;
             font-size: 1.8rem;
-            font-weight: 800;
+            font-weight: 700;
             text-decoration: none;
-            color: white;
+            color: var(--dark);
+            position: relative;
         }
 
         .logo-icon {
-            font-size: 2.2rem;
-            background: rgba(255, 255, 255, 0.2);
             width: 50px;
             height: 50px;
-            border-radius: 50%;
+            background: var(--gradient-primary);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 1.5rem;
+            color: var(--light);
             transition: var(--transition);
+            transform: rotate(-5deg);
         }
 
         .logo:hover .logo-icon {
-            transform: rotate(10deg) scale(1.1);
-            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(0deg) scale(1.1);
         }
 
         .logo-text {
@@ -93,36 +118,27 @@
         }
 
         .logo-subtitle {
-            font-size: 0.8rem;
-            font-weight: 400;
-            opacity: 0.9;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--gray);
             margin-top: 2px;
+            letter-spacing: 1px;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         nav a {
-            color: white;
+            color: var(--dark);
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition);
             padding: 0.5rem 0;
             position: relative;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        nav a i {
-            font-size: 1.1rem;
-        }
-
-        nav a:hover {
-            color: var(--secondary);
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         nav a::after {
@@ -132,12 +148,17 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--secondary);
+            background: var(--gradient-primary);
             transition: var(--transition);
+            transform: skewX(-15deg);
         }
 
         nav a:hover::after {
             width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--primary);
         }
 
         .header-actions {
@@ -146,454 +167,688 @@
             gap: 1.5rem;
         }
 
-        .search-container {
-            position: relative;
-        }
-
-        .search-input {
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 30px;
-            padding: 0.6rem 1rem 0.6rem 2.8rem;
-            color: white;
-            font-size: 0.95rem;
-            width: 220px;
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--border-radius-xl);
+            font-weight: 600;
+            text-decoration: none;
             transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
-        .search-input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--light);
+            box-shadow: var(--shadow);
         }
 
-        .search-input:focus {
-            outline: none;
-            background: rgba(255, 255, 255, 0.25);
-            width: 280px;
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
         }
 
-        .search-icon {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: rgba(255, 255, 255, 0.7);
+        .btn-outline {
+            background: transparent;
+            color: var(--dark);
+            border: 2px solid var(--dark);
+        }
+
+        .btn-outline:hover {
+            background: var(--dark);
+            color: var(--light);
+            transform: translateY(-3px);
         }
 
         .mobile-menu-btn {
             display: none;
             background: none;
             border: none;
-            color: white;
+            color: var(--dark);
             font-size: 1.5rem;
             cursor: pointer;
-            padding: 5px;
-            border-radius: 4px;
+            padding: 8px;
+            border-radius: 8px;
             transition: var(--transition);
         }
 
         .mobile-menu-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--gray-light);
         }
 
-        /* Hero Section */
+        /* Asymmetrical Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 5rem 2rem;
+            padding: 10rem 2rem 8rem;
             position: relative;
             overflow: hidden;
+            background: linear-gradient(135deg, var(--light) 0%, var(--gray-light) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            width: 60%;
+            height: 120%;
+            background: var(--gradient-primary);
+            transform: rotate(-12deg);
+            border-radius: 40px;
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 50%;
+            height: 80%;
+            background: var(--gradient-secondary);
+            transform: rotate(8deg);
+            border-radius: 30px;
+            opacity: 0.03;
+            z-index: 0;
         }
 
         .hero-container {
             max-width: 1400px;
             margin: 0 auto;
-            display: flex;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
             align-items: center;
-            justify-content: space-between;
-            gap: 3rem;
+            position: relative;
+            z-index: 2;
         }
 
         .hero-content {
-            flex: 1;
-            max-width: 600px;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--light);
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            transform: rotate(-2deg);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            color: var(--primary);
         }
 
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 1.5rem;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .hero-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
         }
 
         .hero-subtitle {
             font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            margin-bottom: 2.5rem;
+            color: var(--gray);
+            line-height: 1.6;
             max-width: 500px;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 0.9rem 1.8rem;
-            border-radius: 30px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background: white;
-            color: var(--primary);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-3px);
+            gap: 1.2rem;
+            margin-bottom: 3rem;
         }
 
         .hero-stats {
             display: flex;
-            gap: 2rem;
+            gap: 3rem;
         }
 
         .stat {
             display: flex;
             flex-direction: column;
+            position: relative;
+        }
+
+        .stat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -15px;
+            width: 3px;
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+            transform: skewX(-15deg);
         }
 
         .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .stat-label {
             font-size: 0.9rem;
-            opacity: 0.8;
+            color: var(--gray);
+            font-weight: 500;
         }
 
         .hero-visual {
-            flex: 1;
+            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .hero-graphic {
-            width: 100%;
-            max-width: 500px;
-            height: 350px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: var(--border-radius-lg);
-            backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
+        .floating-cards {
             position: relative;
+            width: 100%;
+            height: 500px;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: var(--light);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--dark);
+            font-weight: 600;
+            width: 220px;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .floating-card:nth-child(1) {
+            top: 10%;
+            right: 10%;
+            transform: rotate(3deg);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .floating-card:nth-child(2) {
+            top: 40%;
+            left: 5%;
+            transform: rotate(-2deg);
+            animation: float 9s ease-in-out infinite 1s;
+        }
+
+        .floating-card:nth-child(3) {
+            bottom: 20%;
+            right: 5%;
+            transform: rotate(1deg);
+            animation: float 7s ease-in-out infinite 2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(var(--rotation, 0deg)); }
+            50% { transform: translateY(-20px) rotate(var(--rotation, 0deg)); }
+        }
+
+        .floating-card:hover {
+            transform: translateY(-10px) rotate(0deg) !important;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .floating-card i {
+            font-size: 1.8rem;
+            width: 40px;
+            text-align: center;
+        }
+
+        .floating-card:nth-child(1) i { color: var(--primary); }
+        .floating-card:nth-child(2) i { color: var(--secondary); }
+        .floating-card:nth-child(3) i { color: var(--accent); }
+
+        /* Diagonal Section Divider */
+        .section-divider {
+            position: relative;
+            height: 150px;
+            background: var(--light);
             overflow: hidden;
         }
 
-        .floating-icon {
+        .section-divider::before {
+            content: '';
             position: absolute;
-            font-size: 2rem;
-            opacity: 0.7;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: var(--gray-light);
+            transform: skewY(-3deg);
+            transform-origin: top left;
         }
 
-        .floating-icon:nth-child(1) {
-            top: 20px;
-            left: 30px;
-            color: var(--accent);
-        }
-
-        .floating-icon:nth-child(2) {
-            top: 40px;
-            right: 40px;
-            color: var(--warning);
-        }
-
-        .floating-icon:nth-child(3) {
-            bottom: 30px;
-            left: 50px;
-            color: var(--secondary);
-        }
-
-        .floating-icon:nth-child(4) {
-            bottom: 50px;
-            right: 60px;
-            color: white;
-        }
-
-        .graphic-center {
-            text-align: center;
-            z-index: 2;
-        }
-
-        .graphic-center i {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
-
-        .graphic-center h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .graphic-center p {
-            opacity: 0.8;
-        }
-
-        /* Features Section */
+        /* Asymmetrical Features Section */
         .features {
-            padding: 5rem 2rem;
-            background: white;
+            padding: 8rem 2rem;
+            background: var(--gray-light);
+            position: relative;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -10%;
+            width: 40%;
+            height: 100px;
+            background: var(--gradient-primary);
+            transform: rotate(-5deg);
+            opacity: 0.1;
         }
 
         .section-header {
             text-align: center;
-            max-width: 700px;
-            margin: 0 auto 4rem;
+            max-width: 800px;
+            margin: 0 auto 6rem;
+            position: relative;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: var(--light);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            font-family: 'Space Grotesk', sans-serif;
+            box-shadow: var(--shadow);
         }
 
         .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
             color: var(--dark);
-            margin-bottom: 1rem;
         }
 
         .section-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--gray);
+            line-height: 1.6;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .feature-card {
             background: var(--light);
-            padding: 2.5rem 2rem;
+            padding: 3rem 2.5rem;
             border-radius: var(--border-radius-lg);
-            text-align: center;
             transition: var(--transition);
-            border: 1px solid var(--gray-light);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.6s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:nth-child(even) {
+            transform: translateY(20px);
+        }
+
+        .feature-card:nth-child(3n) {
+            transform: translateY(40px);
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--box-shadow-lg);
-            border-color: var(--primary-light);
+            transform: translateY(-10px) !important;
+            box-shadow: var(--shadow-lg);
         }
 
         .feature-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 50%;
+            background: var(--gray-light);
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
+            margin: 0 auto 2rem;
             font-size: 2rem;
-            color: white;
+            color: var(--primary);
+            transition: var(--transition);
+            position: relative;
+            transform: rotate(-5deg);
+        }
+
+        .feature-card:hover .feature-icon {
+            background: var(--gradient-primary);
+            color: var(--light);
+            transform: rotate(0deg) scale(1.1);
         }
 
         .feature-title {
-            font-size: 1.5rem;
-            font-weight: 600;
+            font-size: 1.6rem;
+            font-weight: 700;
             margin-bottom: 1rem;
             color: var(--dark);
+            text-align: center;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .feature-description {
             color: var(--gray);
+            line-height: 1.7;
+            font-size: 1.05rem;
+            text-align: center;
         }
 
-        /* Courses Section */
+        /* Asymmetrical Courses Section */
         .courses {
-            padding: 5rem 2rem;
-            background: linear-gradient(to bottom, white, var(--light));
+            padding: 8rem 2rem;
+            background: var(--light);
+            position: relative;
+        }
+
+        .courses::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(135deg, transparent 0%, transparent 50%, var(--gray-light) 50%, var(--gray-light) 100%);
+            z-index: 0;
+        }
+
+        .courses-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         .courses-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            max-width: 1400px;
-            margin: 0 auto 3rem;
+            align-items: flex-end;
+            margin-bottom: 5rem;
+        }
+
+        .courses-header-content {
+            max-width: 600px;
         }
 
         .courses-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2.5rem;
         }
 
         .course-card {
-            background: white;
+            background: var(--light);
             border-radius: var(--border-radius-lg);
             overflow: hidden;
-            box-shadow: var(--box-shadow);
+            box-shadow: var(--shadow);
             transition: var(--transition);
-            border: 1px solid var(--gray-light);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .course-card:nth-child(odd) {
+            transform: rotate(1deg);
+        }
+
+        .course-card:nth-child(even) {
+            transform: rotate(-1deg);
         }
 
         .course-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--box-shadow-lg);
+            transform: translateY(-10px) rotate(0deg) !important;
+            box-shadow: var(--shadow-lg);
         }
 
         .course-header {
-            padding: 1.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
+            padding: 2rem;
+            background: var(--gradient-primary);
+            color: var(--light);
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
         }
 
         .course-icon {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            transition: var(--transition);
+            position: relative;
+            z-index: 2;
+        }
+
+        .course-card:hover .course-icon {
+            transform: scale(1.1) rotate(5deg);
         }
 
         .course-title {
-            font-size: 1.4rem;
-            font-weight: 600;
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+            position: relative;
+            z-index: 2;
         }
 
         .course-content {
-            padding: 1.5rem;
+            padding: 2rem;
         }
 
         .course-description {
             color: var(--gray);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
+            line-height: 1.7;
+            font-size: 1.05rem;
         }
 
         .course-meta {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
             color: var(--gray);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+        }
+
+        .course-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .course-progress {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
         }
 
         .progress-bar {
-            height: 6px;
+            height: 8px;
             background: var(--gray-light);
-            border-radius: 3px;
+            border-radius: 4px;
             overflow: hidden;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
         }
 
         .progress-fill {
             height: 100%;
-            background: var(--accent);
+            background: var(--gradient-primary);
             width: 0%;
-            transition: width 0.5s ease;
+            transition: width 1s ease;
+            border-radius: 4px;
         }
 
         .progress-text {
             display: flex;
             justify-content: space-between;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             color: var(--gray);
         }
 
         .btn-course {
             display: block;
             text-align: center;
-            background: var(--primary);
-            color: white;
-            padding: 0.8rem;
+            background: var(--gradient-primary);
+            color: var(--light);
+            padding: 1rem;
             border-radius: var(--border-radius);
             text-decoration: none;
             font-weight: 600;
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .btn-course:hover {
-            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
         }
 
-        /* CTA Section */
+        /* Asymmetrical CTA Section */
         .cta {
-            padding: 5rem 2rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
+            padding: 8rem 2rem;
+            background: var(--dark);
+            color: var(--light);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 40%;
+            height: 120%;
+            background: var(--gradient-primary);
+            transform: rotate(-15deg);
+            opacity: 0.1;
+        }
+
+        .cta::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            right: -10%;
+            width: 50%;
+            height: 100%;
+            background: var(--gradient-secondary);
+            transform: rotate(10deg);
+            opacity: 0.1;
         }
 
         .cta-container {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         .cta-title {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 3.5rem;
+            font-weight: 800;
             margin-bottom: 1.5rem;
+            line-height: 1.1;
+            color: var(--light);
         }
 
         .cta-subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.9;
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
         }
 
         .btn-cta {
-            background: white;
-            color: var(--primary);
+            background: var(--gradient-primary);
+            color: var(--light);
             font-size: 1.1rem;
-            padding: 1rem 2.5rem;
+            padding: 1.2rem 3rem;
+            box-shadow: var(--shadow);
         }
 
-        /* Footer */
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Asymmetrical Footer */
         footer {
             background: var(--dark);
-            color: white;
-            padding: 4rem 2rem 2rem;
+            color: var(--light);
+            padding: 6rem 2rem 3rem;
+            position: relative;
         }
 
         .footer-container {
@@ -606,13 +861,17 @@
 
         .footer-section h3 {
             margin-bottom: 1.5rem;
-            color: var(--secondary);
+            color: var(--light);
             font-size: 1.3rem;
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .footer-section p {
-            color: #CBD5E1;
+            color: rgba(255, 255, 255, 0.7);
             margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 1.05rem;
         }
 
         .footer-section ul {
@@ -624,16 +883,18 @@
         }
 
         .footer-section a {
-            color: #CBD5E1;
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            font-size: 1.05rem;
         }
 
         .footer-section a:hover {
-            color: var(--secondary);
+            color: var(--primary);
+            transform: translateX(5px);
         }
 
         .social-links {
@@ -643,10 +904,10 @@
         }
 
         .social-link {
-            width: 40px;
-            height: 40px;
+            width: 48px;
+            height: 48px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -654,32 +915,52 @@
         }
 
         .social-link:hover {
-            background: var(--secondary);
+            background: var(--primary);
             transform: translateY(-3px);
         }
 
         .copyright {
             text-align: center;
-            margin-top: 4rem;
+            margin-top: 5rem;
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #94A3B8;
-            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.95rem;
         }
 
         /* Responsive Design */
         @media (max-width: 1024px) {
             .hero-container {
-                flex-direction: column;
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .hero-content {
                 text-align: center;
+            }
+            
+            .hero-title::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .hero-buttons {
+                justify-content: center;
             }
             
             .hero-stats {
                 justify-content: center;
             }
             
-            .hero-content {
-                max-width: 100%;
+            .courses-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+            
+            .feature-card:nth-child(even),
+            .feature-card:nth-child(3n) {
+                transform: none;
             }
         }
 
@@ -688,53 +969,33 @@
                 padding: 1rem;
             }
             
-            .header-container {
-                flex-wrap: wrap;
+            header.scrolled {
+                padding: 0.8rem 1rem;
             }
             
             .logo {
                 font-size: 1.5rem;
             }
             
-            .search-container {
-                order: 3;
-                width: 100%;
-                margin-top: 1rem;
-            }
-            
-            .search-input {
-                width: 100%;
-            }
-            
-            .search-input:focus {
-                width: 100%;
+            .logo-icon {
+                width: 44px;
+                height: 44px;
             }
             
             nav {
                 display: none;
-                width: 100%;
-                margin-top: 1rem;
-            }
-            
-            nav.active {
-                display: block;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                gap: 0.5rem;
             }
             
             .mobile-menu-btn {
-                display: block;
+                display: flex;
             }
             
-            .header-actions {
-                margin-left: auto;
+            .hero {
+                padding: 8rem 1rem 4rem;
             }
             
             .hero-title {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
             
             .hero-subtitle {
@@ -752,45 +1013,63 @@
                 justify-content: center;
             }
             
-            .courses-header {
+            .hero-stats {
                 flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
+                gap: 1.5rem;
             }
             
             .section-title {
-                font-size: 2rem;
+                font-size: 2.5rem;
+            }
+            
+            .features-grid, .courses-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .features, .courses, .cta {
+                padding: 4rem 1rem;
+            }
+            
+            .cta-title {
+                font-size: 2.5rem;
+            }
+            
+            footer {
+                padding: 4rem 1rem 2rem;
+            }
+            
+            .course-card:nth-child(odd),
+            .course-card:nth-child(even) {
+                transform: none;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header Section -->
-    <header>
+    <!-- Asymmetrical Header -->
+    <header id="main-header">
         <div class="header-container">
             <a href="index.html" class="logo">
-                <div class="logo-icon">📚</div>
+                <div class="logo-icon">
+                    <i class="fas fa-shapes"></i>
+                </div>
                 <div class="logo-text">
                     <span>FREE-LEARN</span>
-                    <span class="logo-subtitle">Education For All</span>
+                    <span class="logo-subtitle">ASYMMETRICAL DESIGN</span>
                 </div>
             </a>
 
-            <nav id="main-nav">
+            <nav>
                 <ul>
-                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="courses.html"><i class="fas fa-book-open"></i> Courses</a></li>
-                    <li><a href="progress.html"><i class="fas fa-chart-line"></i> My Progress</a></li>
-                    <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="progress.html">Progress</a></li>
+                    <li><a href="about.html">About</a></li>
                 </ul>
             </nav>
 
             <div class="header-actions">
-                <div class="search-container">
-                    <i class="fas fa-search search-icon"></i>
-                    <input type="text" class="search-input" placeholder="Search courses...">
-                </div>
-                
+                <a href="courses.html" class="btn btn-primary">Get Started</a>
                 <button class="mobile-menu-btn" id="mobile-menu-toggle">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -798,247 +1077,256 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Asymmetrical Hero Section -->
     <section class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1 class="hero-title">Learn Without Limits, For Free</h1>
-                <p class="hero-subtitle">Access high-quality, structured courses completely free of cost. No login or subscription required. Start your learning journey today!</p>
+                <div class="hero-badge">
+                    <i class="fas fa-star"></i>
+                    <span>UNIQUE LEARNING EXPERIENCE</span>
+                </div>
+                <h1 class="hero-title">Learn Differently</h1>
+                <p class="hero-subtitle">Break away from traditional education with our asymmetrical approach to learning. Experience courses designed to match how your brain actually works.</p>
                 
                 <div class="hero-buttons">
                     <a href="courses.html" class="btn btn-primary">
-                        <i class="fas fa-play-circle"></i> Start Learning
+                        <i class="fas fa-play"></i> Start Learning
                     </a>
-                    <a href="#courses" class="btn btn-secondary">
-                        <i class="fas fa-book"></i> Browse Courses
+                    <a href="#courses" class="btn btn-outline">
+                        <i class="fas fa-compass"></i> Explore Courses
                     </a>
                 </div>
                 
                 <div class="hero-stats">
                     <div class="stat">
-                        <span class="stat-number">50K+</span>
+                        <span class="stat-number">94K</span>
                         <span class="stat-label">Active Learners</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-number">120+</span>
-                        <span class="stat-label">Free Courses</span>
+                        <span class="stat-number">287</span>
+                        <span class="stat-label">Unique Courses</span>
                     </div>
                     <div class="stat">
                         <span class="stat-number">100%</span>
-                        <span class="stat-label">Free Forever</span>
+                        <span class="stat-label">Free Access</span>
                     </div>
                 </div>
             </div>
             
             <div class="hero-visual">
-                <div class="hero-graphic">
-                    <div class="floating-icon"><i class="fas fa-code"></i></div>
-                    <div class="floating-icon"><i class="fas fa-laptop-code"></i></div>
-                    <div class="floating-icon"><i class="fas fa-mobile-alt"></i></div>
-                    <div class="floating-icon"><i class="fas fa-cloud"></i></div>
-                    
-                    <div class="graphic-center">
-                        <i class="fas fa-graduation-cap"></i>
-                        <h3>Start Learning Today</h3>
-                        <p>No registration required</p>
+                <div class="floating-cards">
+                    <div class="floating-card">
+                        <i class="fas fa-palette"></i>
+                        <span>Creative Learning</span>
+                    </div>
+                    <div class="floating-card">
+                        <i class="fas fa-puzzle-piece"></i>
+                        <span>Adaptive Paths</span>
+                    </div>
+                    <div class="floating-card">
+                        <i class="fas fa-rocket"></i>
+                        <span>Fast Progress</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
+    <!-- Diagonal Section Divider -->
+    <div class="section-divider"></div>
+
+    <!-- Asymmetrical Features Section -->
     <section class="features">
         <div class="section-header">
-            <h2 class="section-title">Why Choose FREE-LEARN?</h2>
-            <p class="section-subtitle">We're revolutionizing online education by removing all barriers to learning</p>
+            <div class="section-badge">Why It Works</div>
+            <h2 class="section-title">Asymmetrical Learning</h2>
+            <p class="section-subtitle">Traditional linear learning doesn't work for everyone. Our approach adapts to your unique learning style.</p>
         </div>
         
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">
-                    <i class="fas fa-lock-open"></i>
+                    <i class="fas fa-route"></i>
                 </div>
-                <h3 class="feature-title">No Login Required</h3>
-                <p class="feature-description">Start learning immediately without any registration barriers. Your privacy is respected - we don't collect personal data.</p>
+                <h3 class="feature-title">Non-Linear Paths</h3>
+                <p class="feature-description">Jump between topics based on your interests and learning needs, not a rigid curriculum.</p>
             </div>
             
             <div class="feature-card">
                 <div class="feature-icon">
-                    <i class="fas fa-dollar-sign"></i>
+                    <i class="fas fa-brain"></i>
                 </div>
-                <h3 class="feature-title">100% Free Forever</h3>
-                <p class="feature-description">All courses and learning materials are completely free of cost. No hidden fees, no premium tiers - ever.</p>
+                <h3 class="feature-title">Cognitive Alignment</h3>
+                <p class="feature-description">Content structured to match how your brain naturally processes and retains information.</p>
             </div>
             
             <div class="feature-card">
                 <div class="feature-icon">
-                    <i class="fas fa-calendar-alt"></i>
+                    <i class="fas fa-layer-group"></i>
                 </div>
-                <h3 class="feature-title">Structured Learning Path</h3>
-                <p class="feature-description">Day-by-day lessons designed for progressive skill building. Follow a clear path from beginner to advanced.</p>
+                <h3 class="feature-title">Layered Complexity</h3>
+                <p class="feature-description">Start simple and add complexity as needed, rather than following a one-size-fits-all approach.</p>
             </div>
             
             <div class="feature-card">
                 <div class="feature-icon">
-                    <i class="fas fa-chart-bar"></i>
+                    <i class="fas fa-sync-alt"></i>
                 </div>
-                <h3 class="feature-title">Progress Tracking</h3>
-                <p class="feature-description">Your progress is automatically saved locally on your device. Pick up right where you left off anytime.</p>
+                <h3 class="feature-title">Adaptive Pacing</h3>
+                <p class="feature-description">Move quickly through familiar concepts and spend more time on challenging areas.</p>
             </div>
             
             <div class="feature-card">
                 <div class="feature-icon">
-                    <i class="fas fa-mobile-alt"></i>
+                    <i class="fas fa-project-diagram"></i>
                 </div>
-                <h3 class="feature-title">Mobile Friendly</h3>
-                <p class="feature-description">Learn on any device - desktop, tablet, or smartphone. Our responsive design works perfectly everywhere.</p>
+                <h3 class="feature-title">Connected Concepts</h3>
+                <p class="feature-description">See how different ideas relate to each other in a web of knowledge rather than isolated subjects.</p>
             </div>
             
             <div class="feature-card">
                 <div class="feature-icon">
-                    <i class="fas fa-rocket"></i>
+                    <i class="fas fa-user-cog"></i>
                 </div>
-                <h3 class="feature-title">Always Updated</h3>
-                <p class="feature-description">Course content is regularly updated with the latest industry trends and best practices.</p>
+                <h3 class="feature-title">Personalized Flow</h3>
+                <p class="feature-description">Learning experiences tailored to your preferences, energy levels, and optimal learning times.</p>
             </div>
         </div>
     </section>
 
-    <!-- Courses Section -->
+    <!-- Asymmetrical Courses Section -->
     <section class="courses" id="courses">
-        <div class="courses-header">
-            <div class="section-header" style="text-align: left; margin: 0;">
-                <h2 class="section-title">Popular Courses</h2>
-                <p class="section-subtitle">Start with these trending courses loved by our community</p>
-            </div>
-            <a href="courses.html" class="btn btn-secondary">View All Courses</a>
-        </div>
-        
-        <div class="courses-grid">
-            <!-- HTML/CSS Course -->
-            <div class="course-card">
-                <div class="course-header">
-                    <div class="course-icon">
-                        <i class="fab fa-html5"></i>
-                    </div>
-                    <h3 class="course-title">HTML & CSS Fundamentals</h3>
+        <div class="courses-container">
+            <div class="courses-header">
+                <div class="courses-header-content">
+                    <div class="section-badge">Featured Courses</div>
+                    <h2 class="section-title">Learn Your Way</h2>
+                    <p class="section-subtitle">Courses designed with multiple entry points and learning paths.</p>
                 </div>
-                <div class="course-content">
-                    <p class="course-description">Learn to build beautiful, responsive websites with HTML and CSS. Master layout techniques, CSS Grid, Flexbox and modern design principles.</p>
-                    
-                    <div class="course-meta">
-                        <span><i class="fas fa-play-circle"></i> 30 Lessons</span>
-                        <span><i class="fas fa-clock"></i> 15 Hours</span>
-                        <span><i class="fas fa-signal"></i> Beginner</span>
-                    </div>
-                    
-                    <div class="course-progress">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 25%"></div>
-                        </div>
-                        <div class="progress-text">
-                            <span>25% Completed</span>
-                            <span>8/30 Lessons</span>
-                        </div>
-                    </div>
-                    
-                    <a href="course-html-css.html" class="btn-course">Continue Learning</a>
-                </div>
+                <a href="courses.html" class="btn btn-outline">View All Courses</a>
             </div>
             
-            <!-- JavaScript Course -->
-            <div class="course-card">
-                <div class="course-header">
-                    <div class="course-icon">
-                        <i class="fab fa-js-square"></i>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="course-title">Creative Coding</h3>
                     </div>
-                    <h3 class="course-title">JavaScript Programming</h3>
+                    <div class="course-content">
+                        <p class="course-description">Learn programming through visual arts, music, and interactive design. Start with what interests you most.</p>
+                        
+                        <div class="course-meta">
+                            <span><i class="fas fa-play-circle"></i> 52 Lessons</span>
+                            <span><i class="fas fa-clock"></i> 28 Hours</span>
+                            <span><i class="fas fa-signal"></i> Beginner</span>
+                        </div>
+                        
+                        <div class="course-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 65%"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span>65% Completed</span>
+                                <span>34/52 Lessons</span>
+                            </div>
+                        </div>
+                        
+                        <a href="course-coding.html" class="btn-course">Continue Learning</a>
+                    </div>
                 </div>
-                <div class="course-content">
-                    <p class="course-description">Master the language of the web and create interactive experiences. Learn ES6+, DOM manipulation, APIs, and modern JavaScript frameworks.</p>
-                    
-                    <div class="course-meta">
-                        <span><i class="fas fa-play-circle"></i> 45 Lessons</span>
-                        <span><i class="fas fa-clock"></i> 25 Hours</span>
-                        <span><i class="fas fa-signal"></i> Intermediate</span>
-                    </div>
-                    
-                    <div class="course-progress">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 60%"></div>
+                
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-chart-line"></i>
                         </div>
-                        <div class="progress-text">
-                            <span>60% Completed</span>
-                            <span>27/45 Lessons</span>
-                        </div>
+                        <h3 class="course-title">Data Visualization</h3>
                     </div>
-                    
-                    <a href="course-javascript.html" class="btn-course">Continue Learning</a>
+                    <div class="course-content">
+                        <p class="course-description">Transform data into compelling stories. Choose your starting point: design, analysis, or storytelling.</p>
+                        
+                        <div class="course-meta">
+                            <span><i class="fas fa-play-circle"></i> 45 Lessons</span>
+                            <span><i class="fas fa-clock"></i> 32 Hours</span>
+                            <span><i class="fas fa-signal"></i> Intermediate</span>
+                        </div>
+                        
+                        <div class="course-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 30%"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span>30% Completed</span>
+                                <span>14/45 Lessons</span>
+                            </div>
+                        </div>
+                        
+                        <a href="course-data.html" class="btn-course">Continue Learning</a>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- Python Course -->
-            <div class="course-card">
-                <div class="course-header">
-                    <div class="course-icon">
-                        <i class="fab fa-python"></i>
-                    </div>
-                    <h3 class="course-title">Python for Beginners</h3>
-                </div>
-                <div class="course-content">
-                    <p class="course-description">Learn one of the most versatile and popular programming languages. From basics to web development, data analysis, and automation.</p>
-                    
-                    <div class="course-meta">
-                        <span><i class="fas fa-play-circle"></i> 40 Lessons</span>
-                        <span><i class="fas fa-clock"></i> 20 Hours</span>
-                        <span><i class="fas fa-signal"></i> Beginner</span>
-                    </div>
-                    
-                    <div class="course-progress">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 10%"></div>
+                
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-mobile-alt"></i>
                         </div>
-                        <div class="progress-text">
-                            <span>10% Completed</span>
-                            <span>4/40 Lessons</span>
-                        </div>
+                        <h3 class="course-title">UX Design</h3>
                     </div>
-                    
-                    <a href="course-python.html" class="btn-course">Continue Learning</a>
+                    <div class="course-content">
+                        <p class="course-description">Master user experience design through psychology, prototyping, or visual design - start with your strength.</p>
+                        
+                        <div class="course-meta">
+                            <span><i class="fas fa-play-circle"></i> 38 Lessons</span>
+                            <span><i class="fas fa-clock"></i> 24 Hours</span>
+                            <span><i class="fas fa-signal"></i> Beginner</span>
+                        </div>
+                        
+                        <div class="course-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 15%"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span>15% Completed</span>
+                                <span>6/38 Lessons</span>
+                            </div>
+                        </div>
+                        
+                        <a href="course-ux.html" class="btn-course">Continue Learning</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- Asymmetrical CTA Section -->
     <section class="cta">
         <div class="cta-container">
-            <h2 class="cta-title">Ready to Start Your Learning Journey?</h2>
-            <p class="cta-subtitle">Join thousands of learners who are advancing their skills with FREE-LEARN</p>
+            <h2 class="cta-title">Start Learning Differently</h2>
+            <p class="cta-subtitle">Join thousands of learners who have discovered a better way to learn. No rigid structures, just effective education.</p>
             <a href="courses.html" class="btn btn-cta">
-                <i class="fas fa-rocket"></i> Explore All Courses
+                <i class="fas fa-rocket"></i> Begin Your Journey
             </a>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Asymmetrical Footer -->
     <footer>
         <div class="footer-container">
             <div class="footer-section">
                 <h3>FREE-LEARN</h3>
-                <p>Providing free, high-quality education to everyone without barriers. Our mission is to make learning accessible to all.</p>
+                <p>Transforming education through innovative design and accessible learning for everyone.</p>
                 <div class="social-links">
                     <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
             
             <div class="footer-section">
-                <h3>Quick Links</h3>
+                <h3>Navigation</h3>
                 <ul>
                     <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
                     <li><a href="courses.html"><i class="fas fa-chevron-right"></i> All Courses</a></li>
@@ -1050,37 +1338,49 @@
             <div class="footer-section">
                 <h3>Popular Courses</h3>
                 <ul>
-                    <li><a href="course-html-css.html"><i class="fas fa-chevron-right"></i> HTML & CSS</a></li>
-                    <li><a href="course-javascript.html"><i class="fas fa-chevron-right"></i> JavaScript</a></li>
-                    <li><a href="course-python.html"><i class="fas fa-chevron-right"></i> Python</a></li>
-                    <li><a href="course-react.html"><i class="fas fa-chevron-right"></i> React JS</a></li>
+                    <li><a href="course-coding.html"><i class="fas fa-chevron-right"></i> Creative Coding</a></li>
+                    <li><a href="course-data.html"><i class="fas fa-chevron-right"></i> Data Visualization</a></li>
+                    <li><a href="course-ux.html"><i class="fas fa-chevron-right"></i> UX Design</a></li>
+                    <li><a href="course-writing.html"><i class="fas fa-chevron-right"></i> Creative Writing</a></li>
                 </ul>
             </div>
             
             <div class="footer-section">
-                <h3>Contact Info</h3>
+                <h3>Contact</h3>
                 <ul>
-                    <li><a href="mailto:info@free-learn.com"><i class="fas fa-envelope"></i> info@free-learn.com</a></li>
+                    <li><a href="mailto:hello@free-learn.com"><i class="fas fa-envelope"></i> hello@free-learn.com</a></li>
                     <li><a href="#"><i class="fas fa-globe"></i> www.free-learn.com</a></li>
-                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Global Education Platform</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Global Learning Platform</a></li>
                 </ul>
             </div>
         </div>
         
         <div class="copyright">
-            &copy; 2023 FREE-LEARN. All rights reserved. | Education For All
+            &copy; 2023 FREE-LEARN. All rights reserved. | Education Reimagined
         </div>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
-            const nav = document.getElementById('main-nav');
-            nav.classList.toggle('active');
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu functionality
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        
+        mobileMenuToggle.addEventListener('click', function() {
+            const nav = document.querySelector('nav');
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
             
-            // Change icon based on menu state
+            // Change icon
             const icon = this.querySelector('i');
-            if (nav.classList.contains('active')) {
+            if (nav.style.display === 'flex') {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-times');
             } else {
@@ -1089,54 +1389,48 @@
             }
         });
 
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('#main-nav a').forEach(link => {
-            link.addEventListener('click', function() {
-                const nav = document.getElementById('main-nav');
-                const toggle = document.getElementById('mobile-menu-toggle');
-                const icon = toggle.querySelector('i');
-                
-                if (nav.classList.contains('active')) {
-                    nav.classList.remove('active');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            });
-        });
-
-        // Add subtle animation to header on scroll
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.style.padding = '0.7rem 2rem';
-                header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
-            } else {
-                header.style.padding = '1rem 2rem';
-                header.style.boxShadow = 'var(--box-shadow)';
-            }
-        });
-
-        // Animate progress bars when they come into view
+        // Animate elements on scroll
         const observerOptions = {
-            threshold: 0.5
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const progressFill = entry.target.querySelector('.progress-fill');
-                    const width = progressFill.style.width;
-                    progressFill.style.width = '0%';
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                     
-                    setTimeout(() => {
-                        progressFill.style.width = width;
-                    }, 300);
+                    // Animate progress bars
+                    const progressFill = entry.target.querySelector('.progress-fill');
+                    if (progressFill) {
+                        const width = progressFill.style.width;
+                        progressFill.style.width = '0%';
+                        setTimeout(() => {
+                            progressFill.style.width = width;
+                        }, 300);
+                    }
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.course-card').forEach(card => {
+        // Observe feature cards and course cards
+        document.querySelectorAll('.feature-card, .course-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(card);
+        });
+
+        // Add parallax effect to floating cards
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const floatingCards = document.querySelectorAll('.floating-card');
+            
+            floatingCards.forEach((card, index) => {
+                const rate = scrolled * -0.5;
+                card.style.transform = `translateY(${rate}px) rotate(${index % 2 === 0 ? '3deg' : '-2deg'})`;
+            });
         });
     </script>
 </body>
